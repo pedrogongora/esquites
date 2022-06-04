@@ -1,0 +1,26 @@
+{
+  "name": "esquites",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "GPL",
+  "devDependencies": {
+    "inspectpack": "^4.2.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "@types/seedrandom": "^2.4.28",
+    "fosfeno": "file:../fosfeno-local",
+    "git": "^0.1.5",
+    "gulp-cli": "^2.2.0",
+    "pixi.js": "^5.0.4",
+    "seedrandom": "^3.0.3"
+  }
+}
