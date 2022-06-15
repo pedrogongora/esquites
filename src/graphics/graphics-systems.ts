@@ -6,7 +6,7 @@ import { AnimationHelper } from './animation';
 import { EntityFactory, World } from '../state';
 
 
-export class SkiRenderSystem extends System implements RenderableSystem {
+export class SkiRenderSystem extends RenderableSystem {
 
     private player: Entity;
     private renderHelper: RenderHelper;
@@ -145,7 +145,7 @@ export class SkiRenderSystem extends System implements RenderableSystem {
 }
 
 
-export class StartLevelRenderSystem extends System implements RenderableSystem {
+export class StartLevelRenderSystem extends RenderableSystem {
 
     private renderHelper: RenderHelper;
     private animationHelper: AnimationHelper;
@@ -182,7 +182,7 @@ export class StartLevelRenderSystem extends System implements RenderableSystem {
 }
 
 
-export class PauseRenderSystem extends System implements RenderableSystem {
+export class PauseRenderSystem extends RenderableSystem {
 
     private renderHelper: RenderHelper;
     private animationHelper: AnimationHelper;
