@@ -79,22 +79,22 @@ abstract class BaseInputSystem extends System {
         this.engine.input.mouse.registerMouseEvent({
             eventType: 'mousedown',
             callback: mousedown.bind(this),
-            fireGameEvent: true
+            publishGameEvents: true
         });
         this.engine.input.mouse.registerMouseEvent({
             eventType: 'mouseup',
             callback: mouseup.bind(this),
-            fireGameEvent: true
+            publishGameEvents: true
         });
         this.engine.input.mouse.registerMouseEvent({
             eventType: 'mousemove',
             callback: mousemove.bind(this),
-            fireGameEvent: true,
+            publishGameEvents: true,
             //throttle: 100
         });
         this.engine.input.mouse.registerMouseEvent({
             eventType: 'click',
-            fireGameEvent: true
+            publishGameEvents: true
         });
         this.engine.input.mouse.registerMouseEvent({
             eventType: 'contextmenu',
@@ -128,23 +128,23 @@ export class InputSystem extends BaseInputSystem {
         this.engine.input.keyboard.registerKeyEventHandler({
             key: ' ',
             preventDefault: false,
-            fireGameEvents: true,
+            publishGameEvents: true,
             keydownGameEventType: 'SpaceKeyPress',
             keyupGameEventType: 'SpaceKeyRelease'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'f',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Fullscreen'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'p',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Pause'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'r',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Reset'
         });
     }
@@ -154,12 +154,12 @@ export class InputSystem extends BaseInputSystem {
         const orientation = this.engine.input.mobile.mobileStatus.orientation;
         const inputComponents = this.getComponentsOfClass( InputComponent );
         inputComponents.forEach((input: InputComponent) => {
-            input.up = keys[ 'ArrowUp' ] === true;
-            input.down = keys[ 'ArrowDown' ] === true;
-            input.left = keys[ 'ArrowLeft' ] === true;
-            input.right = keys[ 'ArrowRight' ] === true;
-            input.space = keys[ 'Space' ] === true;
-            keys[ 'Space' ] = false;
+            input.up = keys[ 'ArrowUp' ]?.down;
+            input.down = keys[ 'ArrowDown' ]?.down;
+            input.left = keys[ 'ArrowLeft' ]?.down;
+            input.right = keys[ 'ArrowRight' ]?.down;
+            input.space = keys[ 'Space' ]?.down;
+            if (keys[ 'Space' ]) keys[ 'Space' ].down = false;
             if ( orientation ) {
                 input.alpha = orientation.alpha;
                 input.beta = orientation.beta;
@@ -176,17 +176,17 @@ export class PauseInputSystem extends BaseInputSystem {
     registerKeys() {
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'f',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Fullscreen'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'p',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Pause'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'r',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Reset'
         });
     }
@@ -199,12 +199,12 @@ export class PlayerDiedInputSystem extends BaseInputSystem {
     registerKeys() {
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'f',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Fullscreen'
         });
         this.engine.input.keyboard.registerKeyEventHandler({
             key: 'r',
-            fireGameEvents: true,
+            publishGameEvents: true,
             keyupGameEventType: 'Reset'
         });
     }
