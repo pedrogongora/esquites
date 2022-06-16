@@ -9,6 +9,8 @@
   "author": "",
   "license": "GPL",
   "devDependencies": {
+    "git": "^0.1.5",
+    "gulp-cli": "^2.2.0",
     "inspectpack": "^4.2.2",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
@@ -17,9 +19,7 @@
   },
   "dependencies": {
     "@types/seedrandom": "^2.4.28",
-    "fosfeno": "file:../fosfeno-local",
-    "git": "^0.1.5",
-    "gulp-cli": "^2.2.0",
+    "fosfeno": "git+https://github.com/pedrogongora/fosfeno.git",
     "pixi.js": "^5.0.4",
     "seedrandom": "^3.0.3"
   }
